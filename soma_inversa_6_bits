@@ -1,0 +1,16 @@
+module soma_inverso_6_bits(A, B, S,Overflow,Zero, tmp_result);
+input logic [5:0]  A,B;
+output logic [5:0] S; 
+output logic [6:0] tmp_result;
+output logic Overflow, Zero;
+
+always_comb begin
+tmp_result = A +(~B);
+S = tmp_result[5:0];
+Overflow = tmp_result[6];
+if(S == '0 && !Overflow)
+	Zero = 1;
+else
+	Zero = 0;
+end
+endmodule
